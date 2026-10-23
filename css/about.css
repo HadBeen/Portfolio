@@ -1,0 +1,45 @@
+/* about.css – index.html only */
+
+body.page-about {
+  height: 100vh; overflow: hidden;
+  --sidebar-w: 360px; --sidebar-top: 24px; --sidebar-px: 34px;
+}
+
+/* ---------- Figure ---------- */
+.figure {
+  position: fixed; left: 230px; bottom: -4vh; z-index: 1;
+  height: 82vh; pointer-events: none;
+  transform-origin: 50% 100%;               /* pivots from the hips */
+  transform: translate(var(--fx, 0px), var(--fy, 0px)) rotate(var(--fr, 0deg)) scale(var(--fs, 1));
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+  will-change: transform;
+}
+.figure img { height: 100%; display: block; }
+
+/* ---------- Content (right column) ---------- */
+.content {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 2;
+  width: 40vw; min-width: 520px; padding: 88px 60px 40px 0;
+  overflow-y: auto; line-height: 1.8;
+}
+.content p { margin: 0 0 28px; max-width: 560px; }
+.label { color: var(--muted); font-size: 11px; margin-bottom: 4px; }
+.section-title { margin: 56px 0 28px; font-size: 15px; font-family: var(--nav-font); font-weight: 700; }
+
+.exh { display: grid; grid-template-columns: 88px 1fr; margin-bottom: 14px; }
+.exh > span { color: var(--muted); font-size: 11px; padding-top: 4px; }
+.exh ul { list-style: none; margin: 0; padding: 0; }
+.exh li { padding: 3px 0; cursor: default; transition: transform .25s ease; }
+.exh li:hover { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .figure, .exh li { transition: none; }
+}
+
+/* Mobile: starter layout (figure on top, text below) – replace once you have a Figma for it */
+@media (max-width: 800px) {
+  body.page-about { height: auto; overflow: auto; }
+  .figure { position: relative; left: auto; bottom: auto; height: auto; width: 100%; }
+  .figure img { width: 100%; height: auto; }
+  .content { position: static; width: auto; min-width: 0; padding: 20px 12px 60px; }
+}
