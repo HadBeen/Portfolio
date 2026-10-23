@@ -1,171 +1,58 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>陈鹏帆 Chen Pengfan</title>
-<style>
-  :root {
-    --ink: #222;
-    --muted: #777;
-    --line: #aaa;
-    /* The figure's current offset. JS updates these on hover. */
-    --fx: 0px;
-    --fy: 0px;
-    --fr: 0deg;
-    --fs: 1;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; height: 100%; }
-  body {
-    font-family: "Cascadia Mono", ui-monospace, "PingFang SC", "Noto Sans SC", monospace;
-    font-size: 13px;
-    color: var(--ink);
-    background: #fff;
-    overflow: hidden;
-  }
-
-  /* ---------- Sidebar ---------- */
-  .sidebar {
-    position: fixed; top: 24px; left: 0; bottom: 0;
-    width: 360px; padding: 0 34px;
-    border-right: 1px dashed var(--line);
-    z-index: 3;
-  }
-  .sidebar h1 { margin: 6px 0 0; font-size: 18px; font-family: serif; }
-  .sidebar .en { letter-spacing: .15em; font-size: 12px; font-weight: 700; margin-top: 4px; }
-  .nav { margin-top: 48px; display: flex; flex-direction: column; gap: 18px; font-size: 18px; font-family: serif; }
-  .nav a { color: #3b3bd8; }
-  .nav a.active { color: #d9732b; }
-  .lang { margin-top: 48px; font-size: 12px; }
-  .lang a { color: #00007a; }
-  .lang a.on { background: #00007a; color: #fff; text-decoration: none; padding: 1px 5px; }
-
-  /* ---------- Figure ---------- */
-  .figure {
-    position: fixed; left: 230px; bottom: -4vh;
-    height: 82vh; z-index: 1; pointer-events: none;
-    transform-origin: 50% 100%;           /* pivots from the hips/bottom */
-    transform: translate(var(--fx), var(--fy)) rotate(var(--fr)) scale(var(--fs));
-    transition: transform .7s cubic-bezier(.22, 1, .36, 1);
-    will-change: transform;
-  }
-  .figure img { height: 100%; display: block; }
-
-  /* ---------- Content (right column) ---------- */
-  .content {
-    position: fixed; top: 0; right: 0; bottom: 0;
-    width: 40vw; min-width: 520px;
-    padding: 88px 60px 40px 0; overflow-y: auto; z-index: 2;
-    line-height: 1.8;
-  }
-  .content p { margin: 0 0 28px; max-width: 560px; }
-  .label { color: var(--muted); font-size: 11px; margin-bottom: 4px; }
-  .content a { color: #1a1aff; }
-  .section-title { margin: 56px 0 28px; font-size: 15px; font-family: serif; font-weight: 700; }
-  .year { display: grid; grid-template-columns: 88px 1fr; margin-bottom: 14px; }
-  .year > span { color: var(--muted); font-size: 11px; padding-top: 4px; }
-  .year ul { list-style: none; margin: 0; padding: 0; }
-  .year li { padding: 3px 0; cursor: default; transition: transform .25s ease; }
-  .year li:hover { transform: translateX(4px); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .figure { transition: none; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>陈鹏帆 Chen Pengfan</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/about.css">
 </head>
-<body>
+<body class="page-about">
 
-<aside class="sidebar">
-  <h1>陈鹏帆</h1>
-  <div class="en">CHEN PENGFAN</div>
-  <nav class="nav">
-    <a href="#" class="active">关于</a>
-    <a href="#">作品</a>
-  </nav>
-  <div class="lang"><a href="#" class="on">中文</a> / <a href="#">EN</a></div>
-</aside>
+  <header class="sidebar">
+    <div class="brand"><div class="zh">陈鹏帆</div><div class="en">CHEN PENGFAN</div></div>
+    <nav class="main-nav">
+      <a href="index.html" class="active" data-i18n="about">关于</a>
+      <a href="works.html" data-i18n="works">作品</a>
+    </nav>
+    <div class="lang">
+      <button data-lang="zh">中文</button><span class="sep"> / </span><button data-lang="en">EN</button>
+    </div>
+  </header>
 
-<!-- Replace figure.png with your cutout image -->
-<div class="figure" id="figure"><img src="figure.jpg" alt=""></div>
+  <div class="figure" id="figure"><img src="images/figure.jpg" alt=""></div>
 
-<main class="content">
-  <p>陈鹏帆，2004年出生于浙江台州，现就读于中国美术学院跨媒体艺术学院开放媒体体系。创作形式涵盖程序艺术、生成艺术、视频游戏等。他的作品融合了对技术美学的深刻理解与批判思考。</p>
+  <main class="content">
+    <p>陈鹏帆，2004年出生于浙江台州，现就读于中国美术学院跨媒体艺术学院开放媒体体系。创作形式涵盖程序艺术、生成艺术、视频游戏等。他的作品融合了对技术美学的深刻理解与批判思考。</p>
 
-  <div class="label">邮箱</div>
-  <a href="mailto:mennan_2022@qq.com">mennan_2022@qq.com</a>
+    <div class="label">邮箱</div>
+    <a href="mailto:mennan_2022@qq.com">mennan_2022@qq.com</a>
 
-  <div class="section-title">参展经历</div>
+    <div class="section-title">参展经历</div>
 
-  <div class="year"><span>2026</span><ul>
-    <li>_生_，第十届深港城市\建筑双城双年展，河套科创中心，深圳</li>
-    <li>亚洲数字艺术展，三山五园文化艺术中心，北京</li>
-    <li>可能世界档案：2026国际科技艺术展，鸟巢科技艺术中心，北京</li>
-    <li>幻痛伏特+，中国美术学院2026年毕业展，浙江美术馆，杭州</li>
-  </ul></div>
+    <div class="exh"><span>2026</span><ul>
+      <li>_生_，第十届深港城市\建筑双城双年展，河套科创中心，深圳</li>
+      <li>亚洲数字艺术展，三山五园文化艺术中心，北京</li>
+      <li>可能世界档案：2026国际科技艺术展，鸟巢科技艺术中心，北京</li>
+      <li>幻痛伏特+，中国美术学院2026年毕业展，浙江美术馆，杭州</li>
+    </ul></div>
 
-  <div class="year"><span>2025</span><ul>
-    <li>社会游戏，奥地利林茨电子艺术节，林茨设计艺术大学，林茨，奥地利</li>
-    <li>带电的孩子，第八届国际跨媒体艺术节，油罐艺术中心，上海</li>
-    <li>共误：互为劳动时代的艺术，品艺画廊，新加坡</li>
-  </ul></div>
+    <div class="exh"><span>2025</span><ul>
+      <li>社会游戏，奥地利林茨电子艺术节，林茨设计艺术大学，林茨，奥地利</li>
+      <li>带电的孩子，第八届国际跨媒体艺术节，油罐艺术中心，上海</li>
+      <li>共误：互为劳动时代的艺术，品艺画廊，新加坡</li>
+    </ul></div>
 
-  <div class="year"><span>2024</span><ul>
-    <li>社会游戏：Game Om，油罐艺术中心，上海</li>
-  </ul></div>
+    <div class="exh"><span>2024</span><ul>
+      <li>社会游戏：Game Om，油罐艺术中心，上海</li>
+    </ul></div>
 
-  <div class="year"><span>2023</span><ul>
-    <li>五感起大眉，中国美术学院，杭州</li>
-  </ul></div>
-</main>
+    <div class="exh"><span>2023</span><ul>
+      <li>五感起大眉，中国美术学院，杭州</li>
+    </ul></div>
+  </main>
 
-<script>
-(() => {
-  const figure = document.getElementById('figure');
-  const root = document.documentElement;
-
-  // Which elements make the figure react.
-  // Add data-move="x,y,rotate,scale" to any element for a custom pose, e.g. data-move="-12,6,-2,1.02"
-  const TARGETS = 'a, .year li, .section-title, .label, .content p';
-
-  const MAX_SHIFT = 14;   // px, max translate
-  const MAX_ROT   = 1.6;  // deg, max lean
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-
-  function setPose(x = 0, y = 0, r = 0, s = 1) {
-    root.style.setProperty('--fx', x + 'px');
-    root.style.setProperty('--fy', y + 'px');
-    root.style.setProperty('--fr', r + 'deg');
-    root.style.setProperty('--fs', s);
-  }
-
-  // Default pose: lean toward wherever the hovered element sits on screen.
-  function poseFor(el) {
-    const custom = el.closest('[data-move]');
-    if (custom) {
-      const [x, y, r, s] = custom.dataset.move.split(',').map(Number);
-      return [x || 0, y || 0, r || 0, s || 1];
-    }
-    const b = el.getBoundingClientRect();
-    const fb = figure.getBoundingClientRect();
-    // -1..1 offsets of the element from the figure's centre
-    const nx = clamp(((b.left + b.width / 2) - (fb.left + fb.width / 2)) / window.innerWidth, -1, 1);
-    const ny = clamp(((b.top + b.height / 2) - window.innerHeight / 2) / window.innerHeight * 2, -1, 1);
-    return [nx * MAX_SHIFT, ny * MAX_SHIFT * 0.5, nx * MAX_ROT, 1.01];
-  }
-
-  document.addEventListener('mouseover', e => {
-    const el = e.target.closest(TARGETS);
-    if (el) setPose(...poseFor(el));
-  });
-
-  // Back to rest when the cursor leaves a target for empty space.
-  document.addEventListener('mouseout', e => {
-    if (e.target.closest(TARGETS) && !(e.relatedTarget && e.relatedTarget.closest(TARGETS))) {
-      setPose();
-    }
-  });
-})();
-</script>
+  <script src="js/lang.js" defer></script>
+  <script src="js/figure.js" defer></script>
 </body>
 </html>

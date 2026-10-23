@@ -1,0 +1,58 @@
+/* base.css – shared by every page: tokens, reset, sidebar, nav, language toggle */
+
+:root {
+  --ink: #111;
+  --muted: #777;
+  --blue: #1a1aff;
+  --navy: #00007a;
+  --orange: #c8651b;
+  --line: #999;
+
+  --mono: "Cascadia Mono", ui-monospace, Menlo, Consolas, "PingFang SC", "Noto Sans SC", monospace;
+  --nav-font: "Cascadia Mono", ui-monospace, Menlo, Consolas, "Songti SC", "Noto Serif SC", serif;
+
+  /* Pages can override these on <body> (see about.css) */
+  --sidebar-w: 342px;
+  --sidebar-top: 0px;
+  --sidebar-px: 18px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--mono); font-size: 13px; color: var(--ink); background: #fff; }
+a { color: var(--blue); }
+button { font: inherit; background: none; border: 0; padding: 0; color: var(--blue); text-decoration: underline; cursor: pointer; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: fixed; top: var(--sidebar-top); bottom: 0; left: 0;
+  width: var(--sidebar-w); padding: 14px var(--sidebar-px);
+  border-right: 1px dotted var(--line); overflow-y: auto; background: #fff; z-index: 3;
+}
+.brand .zh { font-size: 20px; font-weight: 700; }
+.brand .en { font-size: 13px; font-weight: 700; letter-spacing: .15em; margin-top: 4px; }
+
+.main-nav { margin-top: 52px; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.main-nav a { font-family: var(--nav-font); font-size: 19px; padding: 2px 4px; }
+.main-nav a.active { color: var(--orange); }
+
+/* ---------- Language toggle ---------- */
+.lang { margin-top: 44px; font-size: 13px; }
+.lang button[aria-pressed="true"] { background: var(--navy); color: #fff; text-decoration: none; padding: 4px 7px; font-weight: 700; }
+
+/* ---------- Mobile top bar ---------- */
+@media (max-width: 800px) {
+  .sidebar {
+    position: sticky; top: 0; width: auto; padding: 0; overflow: visible; z-index: 5;
+    border-right: 0; border-bottom: 1px dotted var(--line);
+    display: grid; grid-template-columns: 1fr auto auto;
+    grid-template-areas: "brand nav lang";
+  }
+  .brand { grid-area: brand; padding: 10px 9px; }
+  .brand .zh { font-size: 17px; }
+  .brand .en { font-size: 11px; }
+  .main-nav { grid-area: nav; margin: 0; flex-direction: row; align-items: center; gap: 22px; padding-right: 22px; }
+  .lang { grid-area: lang; margin: 0; display: flex; align-items: center; gap: 10px; }
+  .lang button[aria-pressed="true"] { padding: 22px 16px; }
+  .lang .sep { display: none; }
+}
